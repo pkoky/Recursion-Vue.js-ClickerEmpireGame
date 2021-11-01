@@ -4,11 +4,158 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://kit.fontawesome.com/e28fa0e7ed.js" crossorigin="anonymous"></script>
     <title>ClickerEmpireGame</title>
 </head>
 <body>
-    <button></button>
+    <div class="wrapper bg-light text-white d-flex justify-content-center align-items-start flex-wrap p-3">
+        <!-- left -->
+        <div class="leftContainer bg-dark col-12 col-md-8 col-lg-5 border p-3 rounded mb-3 mb-lg-0">
+            <div class="bg-secondary d-flex justify-content-center px-5 py-3 rounded">
+                <div class="col-12 col-lg-5 border border-warning pt-3 rounded">
+                    <h4 class="text-center">1,102 Burgers</h4>
+                    <p class="text-center">$25 per second</p>
+                </div>
+            </div>
+            <div class="burgerImgArea rounded pt-5">
+                <img src="https://media.istockphoto.com/photos/juicy-hamburger-on-white-background-picture-id1206323282?b=1&k=20&m=1206323282&s=170667a&w=0&h=HuuZHlI67OCWiCH5jP94PbrJpj4_26CMJ2NlugqiNIk=" alt="" class="col-12 rounded-circle btn">
+            </div>
+            <div class="buttons d-flex justify-content-center justify-content-lg-start mt-5">
+                <div class="col-12 col-md-8 col-lg-5 border d-flex justify-content-around p-3">
+                    <div class="bg-secondary col-5 p-2 rounded text-center btn">
+                        <i class="fas fa-power-off fa-3x"></i>
+                    </div>
+                    <div class="bg-secondary col-5 p-2 ms-2 rounded text-center btn">
+                        <i class="far fa-save fa-3x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- right -->
+        <div class="col-12 col-md-8 col-lg-6 d-flex flex-column ms-lg-3">
+            <!-- information -->
+            <div class="information bg-dark d-flex flex-wrap justify-content-around border p-3 mb-3 rounded">
+                <div class="bg-secondary col-12 col-md-8 col-lg-5 border pt-3 mb-3 rounded">
+                    <p class="text-center">Steven</p>
+                </div>
+                <div class="bg-secondary col-12 col-md-8 col-lg-5 border pt-3 mb-3 rounded">
+                    <p class="text-center">25 yrs old</p>
+                </div>
+                <div class="bg-secondary col-12 col-md-8 col-lg-5 border pt-3 mb-3 mb-lg-0 rounded">
+                    <p class="text-center">1,182days</p>
+                </div>
+                <div class="bg-secondary col-12 col-md-8 col-lg-5 border pt-3 rounded">
+                    <p class="text-center">$1,234,111,902</p>
+                </div>
+            </div>
+
+            <div class="items vh-100 bg-dark d-flex flex-column align-items-center p-3 rounded overflow-auto mb-5">  
+                <!-- eachItem -->
+                <div class="eachItem bg-secondary d-flex justify-content-around border p-2 mb-3 rounded">
+                    <div class="imgArea col-3">
+                        <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80" alt="" class="col-12">
+                    </div>
+                    <div class="description col-7 px-4 pt-2">
+                        <h3>House</h3>
+                        <div class="d-flex flex-column flex-md-row justify-content-between pt-2">
+                            <p>$20,000,000</p>
+                            <p class="text-warning">+$32,000/sec</p>
+                        </div>
+                    </div>
+                    <div class="price col-2  pt-4">
+                        <h2 class="text-center">2</h2>
+                    </div>
+                </div>
+
+                <div class="eachItem bg-secondary d-flex justify-content-around border p-2 mb-3 rounded">
+                    <div class="imgArea col-3">
+                        <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80" alt="" class="col-12">
+                    </div>
+                    <div class="description col-7 px-4 pt-2">
+                        <h3>House</h3>
+                        <div class="d-flex flex-column flex-md-row justify-content-between pt-2">
+                            <p>$20,000,000</p>
+                            <p class="text-warning">+$32,000/sec</p>
+                        </div>
+                    </div>
+                    <div class="price col-2  pt-4">
+                        <h2 class="text-center">2</h2>
+                    </div>
+                </div>
+
+                <div class="eachItem bg-secondary d-flex justify-content-around border p-2 mb-3 rounded">
+                    <div class="imgArea col-3">
+                        <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80" alt="" class="col-12">
+                    </div>
+                    <div class="description col-7 px-4 pt-2">
+                        <h3>House</h3>
+                        <div class="d-flex flex-column flex-md-row justify-content-between pt-2">
+                            <p>$20,000,000</p>
+                            <p class="text-warning">+$32,000/sec</p>
+                        </div>
+                    </div>
+                    <div class="price col-2  pt-4">
+                        <h2 class="text-center">2</h2>
+                    </div>
+                </div>
+
+                <div class="eachItem bg-secondary d-flex justify-content-around border p-2 mb-3 rounded">
+                    <div class="imgArea col-3">
+                        <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80" alt="" class="col-12">
+                    </div>
+                    <div class="description col-7 px-4 pt-2">
+                        <h3>House</h3>
+                        <div class="d-flex flex-column flex-md-row justify-content-between pt-2">
+                            <p>$20,000,000</p>
+                            <p class="text-warning">+$32,000/sec</p>
+                        </div>
+                    </div>
+                    <div class="price col-2  pt-4">
+                        <h2 class="text-center">2</h2>
+                    </div>
+                </div>
+
+                <div class="eachItem bg-secondary d-flex justify-content-around border p-2 mb-3 rounded">
+                    <div class="imgArea col-3">
+                        <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80" alt="" class="col-12">
+                    </div>
+                    <div class="description col-7 px-4 pt-2">
+                        <h3>House</h3>
+                        <div class="d-flex flex-column flex-md-row justify-content-between pt-2">
+                            <p>$20,000,000</p>
+                            <p class="text-warning">+$32,000/sec</p>
+                        </div>
+                    </div>
+                    <div class="price col-2  pt-4">
+                        <h2 class="text-center">2</h2>
+                    </div>
+                </div>
+
+                <div class="eachItem bg-secondary d-flex justify-content-around border p-2 mb-3 rounded">
+                    <div class="imgArea col-3">
+                        <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80" alt="" class="col-12">
+                    </div>
+                    <div class="description col-7 px-4 pt-2">
+                        <h3>House</h3>
+                        <div class="d-flex flex-column flex-md-row justify-content-between pt-2">
+                            <p>$20,000,000</p>
+                            <p class="text-warning">+$32,000/sec</p>
+                        </div>
+                    </div>
+                    <div class="price col-2  pt-4">
+                        <h2 class="text-center">2</h2>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>
