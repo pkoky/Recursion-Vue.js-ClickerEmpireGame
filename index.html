@@ -6,13 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Vue.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- VueRouter CDN -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
     <script src="https://kit.fontawesome.com/e28fa0e7ed.js" crossorigin="anonymous"></script>
     <title>ClickerEmpireGame</title>
 </head>
 <body>
-    <div class="wrapper vh-100 d-flex justify-content-center align-items-center">
-        <div class="col-12 col-md-10 text-white d-flex justify-content-center align-items-start flex-wrap p-3">
+    <div id="wrapper" class="wrapper vh-100 d-flex justify-content-center align-items-center">
+        <main-page
+            v-if="(!userObj == '')"
+            v-show="showMainPage"
+            class=""
+            v-bind:user="userObj">
+        </main-page>
+
+        <div v-show="!showMainPage">
+            <div class="col-12 col-md-10 text-white d-flex justify-content-center align-items-start flex-wrap p-3">
+                <div id="startGamePage" class="bg-white text-dark d-flex justify-content-center align-items-center p-4 rounded">
+                    <div class="col-12">
+                        <div class="pb-4">
+                            <h1>Clicker Empire Game</h1>
+                        </div>
+                        <div class="pb-4">
+                            <input id="inputUserName" type="text" class="form-control" placeholder="Your name" v-model="userName">
+                        </div>
+                        <div class="d-flex justify-content-around">
+                            <div class="col-5">
+                                <button id="startGameBtn" class="btn btn-primary col-12" @click="startGame">New</button>
+                            </div>
+                            <div class="col-5">
+                                <button class="btn btn-primary col-12">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
             <!-- left -->
             <!-- <div class="leftContainer bg-dark col-12 col-md-8 col-lg-5 border p-3 rounded mb-3 mb-lg-0">
                 <div class="bg-secondary d-flex justify-content-center px-5 py-3 rounded">
@@ -51,9 +86,9 @@
                     <div class="bg-secondary col-12 col-md-8 col-lg-5 border pt-3 rounded">
                         <p class="text-center">$1,234,111,902</p>
                     </div>
-                </div> -->
+                </div>
 
-                <!-- <div class="items vh-100 bg-dark d-flex flex-column align-items-center p-3 rounded overflow-auto mb-5">  
+                <div class="items vh-100 bg-dark d-flex flex-column align-items-center p-3 rounded overflow-auto mb-5">  
                     eachItem
                     <div class="eachItem bg-secondary d-flex justify-content-around border p-2 mb-3 rounded">
                         <div class="imgArea col-3">
@@ -69,22 +104,6 @@
                         <div class="price col-2  pt-4">
                             <h2 class="text-center">2</h2>
                         </div>
-                    </div> -->
-
-                    <!-- <div class="eachItem bg-secondary d-flex justify-content-around border p-2 mb-3 rounded">
-                        <div class="imgArea col-3">
-                            <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80" alt="" class="col-12">
-                        </div>
-                        <div class="description col-7 px-4 pt-2">
-                            <h3>House</h3>
-                            <div class="d-flex flex-column flex-md-row justify-content-between pt-2">
-                                <p>$20,000,000</p>
-                                <p class="text-warning">+$32,000/sec</p>
-                            </div>
-                        </div>
-                        <div class="price col-2  pt-4">
-                            <h2 class="text-center">2</h2>
-                        </div>
                     </div>
 
                     <div class="eachItem bg-secondary d-flex justify-content-around border p-2 mb-3 rounded">
@@ -149,9 +168,25 @@
                         <div class="price col-2  pt-4">
                             <h2 class="text-center">2</h2>
                         </div>
-                    </div> -->
+                    </div>
+
+                    <div class="eachItem bg-secondary d-flex justify-content-around border p-2 mb-3 rounded">
+                        <div class="imgArea col-3">
+                            <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80" alt="" class="col-12">
+                        </div>
+                        <div class="description col-7 px-4 pt-2">
+                            <h3>House</h3>
+                            <div class="d-flex flex-column flex-md-row justify-content-between pt-2">
+                                <p>$20,000,000</p>
+                                <p class="text-warning">+$32,000/sec</p>
+                            </div>
+                        </div>
+                        <div class="price col-2  pt-4">
+                            <h2 class="text-center">2</h2>
+                        </div>
+                    </div>  -->
                     <!-- itemInfo -->
-                    <!-- <div class="itemInfo col-12 bg-secondary d-flex flex-column justify-content-around border p-3 mb-3 rounded">
+                     <!-- <div class="itemInfo col-12 bg-secondary d-flex flex-column justify-content-around border p-3 mb-3 rounded">
                         <div class="detail col-12 d-flex align-items-center pe-3">
                             <div class="col-8">
                                 <h2 class="py-2">House</h2>
@@ -175,33 +210,83 @@
                                 <button class="btn btn-primary col-12">Purchase</button>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
 
-                <!-- </div>
+                </div>
                 
             </div> -->
+            
 
-            <div class="bg-white text-dark d-flex justify-content-center align-items-center p-4 rounded">
-                <div class="col-12">
-                    <div class="pb-4">
-                        <h1>Clicker Empire Game</h1>
-                    </div>
-                    <div class="pb-4">
-                        <input type="text" class="form-control" placeholder="Your name">
-                    </div>
-                    <div class="d-flex justify-content-around">
-                        <div class="col-5">
-                            <button class="btn btn-primary col-12">New</button>
+            <!-- <div class="mx-auto">
+            <div class="col-10 d-flex flex-column flex-lg-row justify-content-center align-items-center align-items-lg-start py-3 mx-auto"> -->
+
+    <script type="text/x-template" id="mainPage">
+        <div class="mx-auto">
+            <div class="col-10 d-flex flex-column flex-lg-row justify-content-center align-items-center align-items-lg-start py-3 mx-auto">
+                <!-- left -->
+                <div class="leftContainer bg-dark col-12 col-md-8 col-lg-5 p-3 rounded mb-3 mb-lg-0 border border-light">
+                    <div class="bg-secondary d-flex justify-content-center px-5 py-3 rounded">
+                        <div class="col-12 col-lg-5 border border-warning pt-3 rounded">
+                            <h4 class="text-center">1,102 Burgers{{user.name}}</h4>
+                            <p class="text-center">$25 per second</p>
                         </div>
-                        <div class="col-5">
-                            <button class="btn btn-primary col-12">Login</button>
+                    </div>
+                    <div class="burgerImgArea rounded pt-5">
+                        <img src="https://media.istockphoto.com/photos/juicy-hamburger-on-white-background-picture-id1206323282?b=1&k=20&m=1206323282&s=170667a&w=0&h=HuuZHlI67OCWiCH5jP94PbrJpj4_26CMJ2NlugqiNIk=" alt="" class="col-12 rounded-circle btn">
+                    </div>
+                    <div class="buttons d-flex justify-content-center justify-content-lg-start mt-5">
+                        <div class="col-12 col-md-8 col-lg-5 border d-flex justify-content-around p-3">
+                            <div class="bg-secondary col-6 p-2 rounded text-center btn">
+                                <i class="fas fa-power-off fa-3x"></i>
+                            </div>
+                            <div class="bg-secondary col-6 p-2 ms-2 rounded text-center btn">
+                                <i class="far fa-save fa-3x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- right -->
+                <div class="col-12 col-md-8 col-lg-6 d-flex flex-column ms-lg-3">
+                    <div class="information bg-dark d-flex flex-wrap justify-content-around border border-light p-3 mb-3 rounded">
+                        <div class="bg-secondary col-12 col-md-8 col-lg-5 border border-light pt-3 mb-3 rounded">
+                            <p class="text-center">Steven</p>
+                        </div>
+                        <div class="bg-secondary col-12 col-md-8 col-lg-5 border pt-3 mb-3 rounded">
+                            <p class="text-center">25 yrs old</p>
+                        </div>
+                        <div class="bg-secondary col-12 col-md-8 col-lg-5 border pt-3 mb-3 mb-lg-0 rounded">
+                            <p class="text-center">1,182days</p>
+                        </div>
+                        <div class="bg-secondary col-12 col-md-8 col-lg-5 border pt-3 rounded">
+                            <p class="text-center">$1,234,111,902</p>
+                        </div>
+                    </div>
+                    
+
+                    <div class="items vh-100 bg-dark d-flex flex-column align-items-center p-3 rounded overflow-auto mb-5 border border-light">  
+                        <!-- eachItem -->
+                        <div v-for="eachItem in itemsArr" v-if="!showItemInfo" v-on:click="showItemInfoPage" class="bg-secondary col-12 d-flex justify-content-around border border-light p-2 mb-3 rounded">
+                            <div class="imgArea col-3">
+                                <img v-bind:src="eachItem.imageUrl" alt="" class="col-12">
+                            </div>
+                            <div class="description col-7 px-4 pt-2">
+                                <h3>{{ eachItem.name }}</h3>
+                                <div class="d-flex flex-column flex-md-row justify-content-between pt-2">
+                                    <p>${{ eachItem.price }}</p>
+                                    <p class="text-warning">+${{ eachItem.effect }}/sec</p>
+                                </div>
+                            </div>
+                            <div class="price col-2  pt-4">
+                                <h2 class="text-center">{{ eachItem.count }}</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>      
+        </div>
     </div>
-
+</script>
     <script src="main.js"></script>
 </body>
 </html>
