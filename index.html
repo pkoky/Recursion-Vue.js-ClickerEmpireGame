@@ -220,6 +220,7 @@
             <!-- <div class="mx-auto">
             <div class="col-10 d-flex flex-column flex-lg-row justify-content-center align-items-center align-items-lg-start py-3 mx-auto"> -->
 
+    <!-- mainPageTemplate -->
     <script type="text/x-template" id="mainPage">
         <div class="mx-auto">
             <div class="col-10 d-flex flex-column flex-lg-row justify-content-center align-items-center align-items-lg-start py-3 mx-auto">
@@ -264,9 +265,9 @@
                     </div>
                     
 
-                    <div class="items vh-100 bg-dark d-flex flex-column align-items-center p-3 rounded overflow-auto mb-5 border border-light">  
+                    <div v-if="!showItemInfo" class="items vh-100 bg-dark d-flex flex-column align-items-center p-3 rounded overflow-auto mb-5 border border-light">  
                         <!-- eachItem -->
-                        <div v-for="eachItem in itemsArr" v-if="!showItemInfo" v-on:click="showItemInfoPage" class="bg-secondary col-12 d-flex justify-content-around border border-light p-2 mb-3 rounded">
+                        <div v-for="eachItem in itemsArr" v-on:click="showItemInfoPage(eachItem)" class="bg-secondary col-12 d-flex justify-content-around border border-light p-2 mb-3 rounded">
                             <div class="imgArea col-3">
                                 <img v-bind:src="eachItem.imageUrl" alt="" class="col-12">
                             </div>
@@ -282,11 +283,44 @@
                             </div>
                         </div>
                     </div>
+                    <item-info
+                        v-if="showItemInfo"
+                    ></item-info>
                 </div>
             </div>
         </div>
-    </div>
-</script>
+    </script>
+
+<!-- itemInfoTemplate -->
+    <script type="text/x-template" id="itemInfoPage">
+        <div class="items h-100 bg-dark d-flex flex-column align-items-center p-3 rounded overflow-auto mb-5 border border-light">
+            <div class="itemInfo col-12 bg-secondary d-flex flex-column justify-content-around border p-3 mb-3 rounded">
+                <div class="detail col-12 d-flex align-items-center pe-3">
+                    <div class="col-8">
+                        <h2 class="py-2">House</h2>
+                        <p>Max Purchases: 100</p>
+                        <p>Price: $20,000,000</p>
+                        <p>Get 32,000 extra yen per second</p>
+                    </div>
+                    <div class="col-4">
+                    <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80" alt="" class="col-12">
+                    </div>
+                </div>
+                <div class="inputForm py-3">
+                    <h5>How Many would you like to purchase?</h5>
+                    <input type="number" class="form-control text-end" min="0">
+                </div>
+                <div class="d-flex flex-column flex-lg-row justify-content-around align-items-center pt-3">
+                    <div class="bg-light col-10 col-lg-4 rounded mb-3 mb-lg-0">
+                        <button class="btn btn-outline-primary col-12">Go Back</button>
+                    </div>
+                    <div class="bg-light col-10 col-lg-4 rounded">
+                        <button class="btn btn-primary col-12">Purchase</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
     <script src="main.js"></script>
 </body>
 </html>
