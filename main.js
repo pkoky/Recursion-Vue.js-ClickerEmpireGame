@@ -76,7 +76,6 @@ class Controller {
         else {
             wrapper.classList.add("vh-100")
         }
-
     }
 }
 
@@ -90,9 +89,16 @@ var itemInfo = {
         }
     },
     methods: {
-        showMainPage() {
-            
-        }
+        pushPurchaseBtn() {
+            let possibleValues = this.item.maxCount - this.item.count;
+            if (this.item.count < this.item.maxCount && this.purchaseAmount <= possibleValues){
+                this.item.count += Number(this.purchaseAmount);
+            }
+            else {
+                alert("This quantity is not available for purchase. \n Please change the value to " + possibleValues + " or less.")
+            }
+            console.log(this.item.count)
+        },
     }
 }
 
