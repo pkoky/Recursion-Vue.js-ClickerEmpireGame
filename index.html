@@ -285,6 +285,8 @@
                     </div>
                     <item-info
                         v-if="showItemInfo"
+                        v-bind:item="currItem"
+                        v-on:backPage="switchShowItemInfo"
                     ></item-info>
                 </div>
             </div>
@@ -297,22 +299,26 @@
             <div class="itemInfo col-12 bg-secondary d-flex flex-column justify-content-around border p-3 mb-3 rounded">
                 <div class="detail col-12 d-flex align-items-center pe-3">
                     <div class="col-8">
-                        <h2 class="py-2">House</h2>
-                        <p>Max Purchases: 100</p>
-                        <p>Price: $20,000,000</p>
-                        <p>Get 32,000 extra yen per second</p>
+                        <h2 class="py-2">{{item.name}}</h2>
+                        <p>Max Purchases: {{item.maxCount}}</p>
+                        <p>Price: ${{item.price}}</p>
+                        <p>
+                            Get {{item.effect}} extra yen per 
+                            <span v-if="item.type=='ability'">click</span>
+                            <span v-else>second</span>
+                        </p>
                     </div>
                     <div class="col-4">
-                    <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1474&q=80" alt="" class="col-12">
+                    <img v-bind:src="item.imageUrl" alt="" class="col-12">
                     </div>
                 </div>
                 <div class="inputForm py-3">
                     <h5>How Many would you like to purchase?</h5>
-                    <input type="number" class="form-control text-end" min="0">
+                    <input type="number" class="form-control text-end" min="0" v-model="purchaseAmount">
                 </div>
                 <div class="d-flex flex-column flex-lg-row justify-content-around align-items-center pt-3">
                     <div class="bg-light col-10 col-lg-4 rounded mb-3 mb-lg-0">
-                        <button class="btn btn-outline-primary col-12">Go Back</button>
+                        <button class="btn btn-outline-primary col-12" v-on:click="$emit('backPage')">Go Back</button>
                     </div>
                     <div class="bg-light col-10 col-lg-4 rounded">
                         <button class="btn btn-primary col-12">Purchase</button>

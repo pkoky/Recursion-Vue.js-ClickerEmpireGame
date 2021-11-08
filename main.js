@@ -46,23 +46,6 @@ class Controller {
         return new User(name, 20, 0, 50000, 0)
     }
 
-    // static createItems () {
-    //     const itemObjArray = {
-    //         "FlipMachine" : new Item("Flip Machine", "ability", images["FlipMachine"], 15000, 0, 25, 1, 500),
-    //         "ETFStock" : new Item("ETF Stock", "investment", images["ETFStock"], 330000, 0, 0.1, 0, "∞"),
-    //         "ETFBonds" : new Item("ETF Bonds", "investment", images["ETFBonds"], 300000, 0, 0.07, 0, "∞"),
-    //         "LemonadeStand" : new Item("Lemonade Stand", "realEstate", images["LemonadeStand"], 30000, 0, 30, 0, 1000),
-    //         "IceCreamTruck" : new Item("IceCream Truck", "realEstate", images["IceCreamTruck"], 100000, 0, 120, 0, 500),
-    //         "House" : new Item("House", "realEstate", images["House"], 20000000, 0, 32000, 0, 100),
-    //         "TownHouse" : new Item("TownHouse", "realEstate", images["TownHouse"], 40000000, 0, 64000, 0, 100),
-    //         "Mansion" : new Item("Mansion", "realEstate", images["Mansion"], 250000000, 0, 500000, 0, 20),
-    //         "IndustrialSpace" : new Item("Industrial Space", "realEstate", images["IndustrialSpace"], 1000000000, 0, 2200000, 0, 10),
-    //         "HotelSkyscraper" : new Item("Hotel Skyscraper", "realEstate", images["HotelSkyscraper"], 10000000000, 0, 250000000, 0, 5),
-    //         "BulletSpeedSkyRailway" : new Item("Bullet-Speed SkyRailway", "realEstate", images["BulletSpeedSkyRailway"], 10000000000000, 0, 30000000000, 0, 1),
-    //     }
-    //     return itemObjArray;
-    // }
-
     static createItemsArr () {
         const itemObjArray = [
             new Item("Flip Machine", "ability", images["FlipMachine"], 15000, 0, 25, 1, 500),
@@ -99,7 +82,18 @@ class Controller {
 
 
 var itemInfo = {
-    template: '#itemInfoPage'
+    props:['item'],
+    template: '#itemInfoPage',
+    data: function() {
+        return {
+            purchaseAmount: 0,
+        }
+    },
+    methods: {
+        showMainPage() {
+            
+        }
+    }
 }
 
 
@@ -119,6 +113,9 @@ var mainPage = {
         showItemInfoPage(currItem) {
             this.showItemInfo = !this.showItemInfo;
             this.currItem = currItem;
+        },
+        switchShowItemInfo() {
+            this.showItemInfo = !this.showItemInfo;
         }
     },
     components: {
