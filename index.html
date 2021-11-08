@@ -228,7 +228,7 @@
                 <div class="leftContainer bg-dark col-12 col-md-8 col-lg-5 p-3 rounded mb-3 mb-lg-0 border border-light">
                     <div class="bg-secondary d-flex justify-content-center px-5 py-3 rounded">
                         <div class="col-12 col-lg-5 border border-warning pt-3 rounded">
-                            <h4 class="text-center">1,102 Burgers{{user.name}}</h4>
+                            <h4 class="text-center">1,102 Burgers</h4>
                             <p class="text-center">$25 per second</p>
                         </div>
                     </div>
@@ -251,16 +251,16 @@
                 <div class="col-12 col-md-8 col-lg-6 d-flex flex-column ms-lg-3">
                     <div class="information bg-dark d-flex flex-wrap justify-content-around border border-light p-3 mb-3 rounded">
                         <div class="bg-secondary col-12 col-md-8 col-lg-5 border border-light pt-3 mb-3 rounded">
-                            <p class="text-center">Steven</p>
+                            <p class="text-center">{{user.name}}</p>
                         </div>
                         <div class="bg-secondary col-12 col-md-8 col-lg-5 border pt-3 mb-3 rounded">
-                            <p class="text-center">25 yrs old</p>
+                            <p class="text-center">{{user.age}} yrs old</p>
                         </div>
                         <div class="bg-secondary col-12 col-md-8 col-lg-5 border pt-3 mb-3 mb-lg-0 rounded">
-                            <p class="text-center">1,182days</p>
+                            <p class="text-center">{{user.days}}days</p>
                         </div>
                         <div class="bg-secondary col-12 col-md-8 col-lg-5 border pt-3 rounded">
-                            <p class="text-center">$1,234,111,902</p>
+                            <p class="text-center">${{user.money}}</p>
                         </div>
                     </div>
                     
@@ -273,9 +273,9 @@
                             </div>
                             <div class="description col-7 px-4 pt-2">
                                 <h3>{{ eachItem.name }}</h3>
-                                <div class="d-flex flex-column flex-md-row justify-content-between pt-2">
+                                <div class="d-flex flex-wrap flex-column flex-md-row justify-content-between pt-2">
                                     <p>${{ eachItem.price }}</p>
-                                    <p class="text-warning">+${{ eachItem.effect }}/sec</p>
+                                    <p class="text-warning">+ ${{ eachItem.effect }} / <span v-if="eachItem.type==='ability'">click</span><span v-else>sec</span></p>
                                 </div>
                             </div>
                             <div class="price col-2  pt-4">
@@ -287,6 +287,7 @@
                         v-if="showItemInfo"
                         v-bind:item="currItem"
                         v-on:backPage="switchShowItemInfo"
+                        v-on:pushPurchaseBtn="pushPurchaseBtn($event)"
                     ></item-info>
                 </div>
             </div>
@@ -321,7 +322,7 @@
                         <button class="btn btn-outline-primary col-12" v-on:click="$emit('backPage')">Go Back</button>
                     </div>
                     <div class="bg-light col-10 col-lg-4 rounded">
-                        <button class="btn btn-primary col-12" v-on:click="pushPurchaseBtn">Purchase</button>
+                        <button class="btn btn-primary col-12" v-on:click="$emit('pushPurchaseBtn', purchaseAmount)">Purchase</button>
                     </div>
                 </div>
             </div>

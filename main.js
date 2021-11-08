@@ -77,6 +77,10 @@ class Controller {
             wrapper.classList.add("vh-100")
         }
     }
+
+    static haveEnoughMoney() {
+
+    }
 }
 
 
@@ -90,9 +94,16 @@ var itemInfo = {
     },
     methods: {
         pushPurchaseBtn() {
+            this.additionToCount();
+        },
+
+        additionToCount() {
             let possibleValues = this.item.maxCount - this.item.count;
+            let haveEnoughMoney = Controller.haveEnoughMoney(this.item)
             if (this.item.count < this.item.maxCount && this.purchaseAmount <= possibleValues){
                 this.item.count += Number(this.purchaseAmount);
+
+                this.$emit('pushPurchaseBtn');
             }
             else {
                 alert("This quantity is not available for purchase. \n Please change the value to " + possibleValues + " or less.")
@@ -111,17 +122,34 @@ var mainPage = {
         itemsArr: this.user.purchasedItems,
         showItemInfo: false,
         currItem: '',
-
       }
     },
     template: '#mainPage',
     methods: {
         showItemInfoPage(currItem) {
-            this.showItemInfo = !this.showItemInfo;
+            this.switchShowItemInfo()
             this.currItem = currItem;
         },
+
         switchShowItemInfo() {
             this.showItemInfo = !this.showItemInfo;
+        },
+
+        pushPurchaseBtn(purchaseAmount) {
+            this.additionToCount(purchaseAmount);
+        },
+
+        additionToCount(purchaseAmount) {
+            let possibleValues = this.currItem.maxCount - this.currItem.count;
+            let haveEnoughMoney = Controller.haveEnoughMoney(this.currItem);
+            if (this.currItem.count < this.currItem.maxCount && purchaseAmount <= possibleValues){
+                this.switchShowItemInfo();
+                this.currItem.count += Number(purchaseAmount);
+            } else if (this.currItem.count === this.currItem.maxCount) {
+                this.switchShowItemInfo();
+            } else {
+                alert("This quantity is not available for purchase. \n Please change the value to " + possibleValues + " or less.")
+            }
         }
     },
     components: {
