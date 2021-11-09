@@ -228,12 +228,12 @@
                 <div class="leftContainer bg-dark col-12 col-md-8 col-lg-5 p-3 rounded mb-3 mb-lg-0 border border-light">
                     <div class="bg-secondary d-flex justify-content-center px-5 py-3 rounded">
                         <div class="col-12 col-lg-5 border border-warning pt-3 rounded">
-                            <h4 class="text-center">1,102 Burgers</h4>
+                            <h4 class="text-center">{{user.burger}} Burgers</h4>
                             <p class="text-center">$25 per second</p>
                         </div>
                     </div>
                     <div class="burgerImgArea rounded pt-5">
-                        <img src="https://media.istockphoto.com/photos/juicy-hamburger-on-white-background-picture-id1206323282?b=1&k=20&m=1206323282&s=170667a&w=0&h=HuuZHlI67OCWiCH5jP94PbrJpj4_26CMJ2NlugqiNIk=" alt="" class="col-12 rounded-circle btn">
+                        <img src="https://media.istockphoto.com/photos/juicy-hamburger-on-white-background-picture-id1206323282?b=1&k=20&m=1206323282&s=170667a&w=0&h=HuuZHlI67OCWiCH5jP94PbrJpj4_26CMJ2NlugqiNIk=" alt="" class="col-12 rounded-circle btn" v-on:click="clickBurger">
                     </div>
                     <div class="buttons d-flex justify-content-center justify-content-lg-start mt-5">
                         <div class="col-12 col-md-8 col-lg-5 border d-flex justify-content-around p-3">

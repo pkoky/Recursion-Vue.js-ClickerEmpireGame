@@ -102,6 +102,9 @@ class Controller {
         else return remainingQuantity;
     }
 
+    static calculateEffect(item) {
+        return item.effect * item.count;
+    }
 }
 
 
@@ -175,12 +178,25 @@ var mainPage = {
 
         drawMoney() {
 
-        }
+        },
+
+        depositMoney(moneyToDeposit) {
+            this.user.money += moneyToDeposit;
+        },
+
+        clickBurger() {
+            this.user.burger++;
+            let effect = Controller.calculateEffect(this.user.purchasedItems[0]);
+            this.depositMoney(effect);
+        },
+
+
     },
     components: {
         'item-info': itemInfo,
     }
-  }
+}
+
 
 var vm = new Vue({
     el: '#wrapper',
