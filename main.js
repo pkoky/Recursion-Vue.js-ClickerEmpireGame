@@ -234,6 +234,15 @@ var mainPage = {
         getBurgerEffect() {
             return Controller.calculateEffect(this.user.purchasedItems[0]); 
         },
+
+        pushResetBtn() {
+            let result = window.confirm('リセットしますか？')
+            if (!result) return;
+            if (this.user.name in localStorage) {
+                localStorage.removeItem(this.user.name);
+            }
+            this.$emit('reset-data', this.user.name);
+        }
     },
 
     created: function() {
@@ -271,6 +280,11 @@ var vm = new Vue({
             } else {
                 alert('データがありません。\n新しく始めてください。');
             }
+        },
+
+        resetData(userName) {
+            console.log(userName)
+            this.userObj = Controller.createUser(userName)
         },
 
         switchPage() {

@@ -22,7 +22,9 @@
             v-if="(!userObj == '')"
             v-show="showMainPage"
             class=""
-            v-bind:user="userObj">
+            v-bind:user="userObj"
+            v-on:reset-data="resetData($event)"
+            >
         </main-page>
 
         <div v-show="!showMainPage">
@@ -53,7 +55,7 @@
     <script type="text/x-template" id="mainPage">
         <div class="mx-auto">
             <div class="col-10 d-flex flex-column flex-lg-row justify-content-center align-items-center align-items-lg-start py-3 mx-auto">
-                
+
                 <!-- left -->
                 <div class="leftContainer bg-dark col-12 col-md-8 col-lg-5 p-3 rounded mb-3 mb-lg-0 border border-light">
                     <div class="bg-secondary d-flex justify-content-center px-5 py-3 rounded">
@@ -68,7 +70,7 @@
                     <div class="buttons d-flex justify-content-center justify-content-lg-start mt-5">
                         <div class="col-12 col-md-8 col-lg-5 border d-flex justify-content-around p-3">
                             <div class="bg-secondary col-6 p-2 rounded text-center btn">
-                                <i class="fas fa-power-off fa-3x"></i>
+                                <i class="fas fa-power-off fa-3x" v-on:click="pushResetBtn"></i>
                             </div>
                             <div class="bg-secondary col-6 p-2 ms-2 rounded text-center btn">
                                 <i class="far fa-save fa-3x" v-on:click="pushSaveBtn"></i>
