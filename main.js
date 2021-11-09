@@ -95,9 +95,13 @@ class Controller {
         }
     }
 
-    static quantityAvailablePurchase() {
-        
+    static quantityAvailablePurchase(price, remainingQuantity, money) {
+        let quantityForMoney = Math.floor(money / price);
+        if (quantityForMoney == 0) return 0;
+        if (quantityForMoney <= remainingQuantity) return quantityForMoney;
+        else return remainingQuantity;
     }
+
 }
 
 
@@ -147,23 +151,25 @@ var mainPage = {
             let totalAmount = this.currItem.price * purchaseAmount;
             let haveEnoughMoney = Controller.haveEnoughMoney(totalAmount, this.user.money);
             let additionType = Controller.determineAdditionType(this.currItem, purchaseAmount);
-            let quantityAvailablePurchase = Controller.quantityAvailablePurchase()
+            let quantityAvailablePurchase = Controller.quantityAvailablePurchase(this.currItem.price, this.currItem.maxCount - purchaseAmount, this.user.money);
 
             if (haveEnoughMoney && additionType === "ETF"){
                 this.currItem.count += Number(purchaseAmount);
                 this.switchShowItemInfo();
                 return;
             };
+
             if (haveEnoughMoney && additionType === "addition"){
                 this.currItem.count += Number(purchaseAmount);
                 this.switchShowItemInfo();
-                console.log("if")
             } else if (additionType === "alreadyMaxCount") {
-                console.log("else if")
                 this.switchShowItemInfo();
             } else {
-                console.log("else")
-                alert("This quantity is not available for purchase. \n Please change the value to "  + " or less.")
+                if (quantityAvailablePurchase == 0) {
+                    alert("You can't buy one.\nPlease make money.");
+                } else {
+                    alert("This quantity is not available for purchase. \nPlease change the value to " + quantityAvailablePurchase + " or less.")
+                }
             }
         },
 
