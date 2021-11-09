@@ -43,7 +43,7 @@ class User {
 
 class Controller {
     static createUser(name) {
-        return new User(name, 20, 0, 50000, 0)
+        return new User(name, 20, 0, 500000, 0)
     }
 
     static createItemsArr () {
@@ -97,8 +97,9 @@ class Controller {
 
     static quantityAvailablePurchase(price, remainingQuantity, money) {
         let quantityForMoney = Math.floor(money / price);
+
         if (quantityForMoney == 0) return 0;
-        if (quantityForMoney <= remainingQuantity) return quantityForMoney;
+        else if (quantityForMoney <= remainingQuantity || remainingQuantity <= 0 || isNaN(remainingQuantity)) return quantityForMoney;
         else return remainingQuantity;
     }
 
@@ -166,10 +167,10 @@ var mainPage = {
             if (haveEnoughMoney && additionType === "ETF"){
                 this.currItem.count += Number(purchaseAmount);
                 this.switchShowItemInfo();
-                return true;
-            };
+                console.log("etf")
+            }
 
-            if (haveEnoughMoney && additionType === "addition"){
+            else if (haveEnoughMoney && additionType === "addition"){
                 this.currItem.count += Number(purchaseAmount);
                 this.withdrawMoney(totalAmount);
                 this.switchShowItemInfo();
