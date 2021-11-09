@@ -113,7 +113,6 @@ class Controller {
         let totalAmount = item.price * item.count;
         return Math.floor((totalAmount/100) * item.effect);
     }
-
 }
 
 
@@ -129,7 +128,6 @@ var itemInfo = {
         pushPurchaseBtn() {
             this.additionToCount();
         },
-
     }
 }
 
@@ -225,8 +223,15 @@ var mainPage = {
                     this.depositMoney(effect);
                 }
             }
-        }
+        },
 
+        pushSaveBtn() {
+
+        },
+
+        getBurgerEffect() {
+            return Controller.calculateEffect(this.user.purchasedItems[0]); 
+        },
     },
 
     created: function() {
@@ -248,6 +253,10 @@ var vm = new Vue({
     },
     methods: {
         startGame() {
+            if (this.userName == '') {
+                alert('名前を入力してください。');
+                return;
+            };
             Controller.switchWrapperVh()
             this.showMainPage = !this.showMainPage; //
             this.userObj = Controller.createUser(this.userName);
