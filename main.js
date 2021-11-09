@@ -164,13 +164,7 @@ var mainPage = {
             let additionType = Controller.determineAdditionType(this.currItem, purchaseAmount);
             let haveEnoughMoney = Controller.haveEnoughMoney(totalAmount, this.user.money);
 
-            if (haveEnoughMoney && additionType === "ETF"){
-                this.currItem.count += Number(purchaseAmount);
-                this.switchShowItemInfo();
-                console.log("etf")
-            }
-
-            else if (haveEnoughMoney && additionType === "addition"){
+            if (haveEnoughMoney && (additionType === "addition" || additionType === "ETF")){
                 this.currItem.count += Number(purchaseAmount);
                 this.withdrawMoney(totalAmount);
                 this.switchShowItemInfo();
