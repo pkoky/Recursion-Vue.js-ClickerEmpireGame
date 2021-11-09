@@ -33,14 +33,14 @@
                             <h1>Clicker Empire Game</h1>
                         </div>
                         <div class="pb-4">
-                            <input id="inputUserName" type="text" class="form-control" placeholder="Your name" v-model="userName" autofocus>
+                            <input id="inputUserName" type="text" class="form-control" placeholder="Your name" v-model="userName" autofocus required>
                         </div>
-                        <div class="d-flex justify-content-around">
+                        <div class="d-flex justify-content-between">
                             <div class="col-5">
                                 <button type="submit" form="inputUserName" id="startGameBtn" class="btn btn-primary col-12" v-on:click="startGame">New</button>
                             </div>
                             <div class="col-5">
-                                <button class="btn btn-primary col-12">Login</button>
+                                <button type="submit" class="btn btn-primary col-12" id="loginBtn" v-on:click="getLoginData">Login</button>
                             </div>
                         </div>
                     </div>

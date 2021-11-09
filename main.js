@@ -226,7 +226,9 @@ var mainPage = {
         },
 
         pushSaveBtn() {
-
+            let jsonEncoded = JSON.stringify(this.user);
+            console.log(jsonEncoded)
+            localStorage.setItem(this.user.name, jsonEncoded);
         },
 
         getBurgerEffect() {
@@ -257,9 +259,23 @@ var vm = new Vue({
                 alert('名前を入力してください。');
                 return;
             };
-            Controller.switchWrapperVh()
-            this.showMainPage = !this.showMainPage; //
             this.userObj = Controller.createUser(this.userName);
+            this.switchPage();
+        },
+
+        getLoginData() {
+            if (this.userName in localStorage) {
+                let jsonDecoded = JSON.parse(localStorage.getItem(this.userName));
+                this.userObj = jsonDecoded;
+                this.switchPage();
+            } else {
+                alert('データがありません。\n新しく始めてください。');
+            }
+        },
+
+        switchPage() {
+            Controller.switchWrapperVh()
+            this.showMainPage = !this.showMainPage;
         }
     },
     components: {
