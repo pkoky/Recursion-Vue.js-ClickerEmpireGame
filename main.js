@@ -63,6 +63,8 @@ class Controller {
         return itemObjArray;
     }
 
+    
+
     static displayNone(id) {
         let page = document.getElementById(id)
         page.classList.add("d-none");
@@ -106,6 +108,12 @@ class Controller {
     static calculateEffect(item) {
         return item.effect * item.count;
     }
+
+    static calculateEffectOfETF(item) {
+        let totalAmount = item.price * item.count;
+        return (totalAmount/100) * item.effect;
+    }
+
 }
 
 
@@ -192,8 +200,39 @@ var mainPage = {
             this.depositMoney(effect);
         },
 
+        timerControl() {
+            this.addDaysAndAge();
+            this.addMoneyForItemsPerSecond();
+        },
+
+        addDaysAndAge() {
+            this.user.days++;
+            if (this.user.days == 365) {
+                this.user.age++;
+                this.user.days = 0;
+            }
+        },
+
+        addMoneyForItemsPerSecond() {
+            let items = this.user.purchasedItems;
+            for (let item of items) {
+                if (item.type == 'investment') {
+                    let effect = Controller.calculateEffectOfETF(item);
+                    this.depositMoney(effect);
+                }
+                else if (item.type != "ability") {
+                    let effect = Controller.calculateEffect(item);
+                    this.depositMoney(effect);
+                }
+            }
+        }
 
     },
+
+    created: function() {
+        setInterval(this.timerControl, 100);
+    },
+
     components: {
         'item-info': itemInfo,
     }
