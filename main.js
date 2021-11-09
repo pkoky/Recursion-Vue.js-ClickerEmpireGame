@@ -97,19 +97,6 @@ var itemInfo = {
             this.additionToCount();
         },
 
-        additionToCount() {
-            let possibleValues = this.item.maxCount - this.item.count;
-            let haveEnoughMoney = Controller.haveEnoughMoney(this.item)
-            if (this.item.count < this.item.maxCount && this.purchaseAmount <= possibleValues){
-                this.item.count += Number(this.purchaseAmount);
-
-                this.$emit('pushPurchaseBtn');
-            }
-            else {
-                alert("This quantity is not available for purchase. \n Please change the value to " + possibleValues + " or less.")
-            }
-            console.log(this.item.count)
-        },
     }
 }
 
