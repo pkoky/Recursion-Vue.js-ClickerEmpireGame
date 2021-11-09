@@ -81,6 +81,18 @@ class Controller {
     static haveEnoughMoney() {
 
     }
+
+    static determineAdditionType(item, purchaseAmount) {
+        let possibleValues = item.maxCount - item.count;
+        if (item.maxCount === "∞") return "ETF";
+        if (item.count < item.maxCount && purchaseAmount <= possibleValues) {
+            return "addition";
+        } else if (item.count === item.maxCount) {
+            return "alreadyMaxCount";
+        } else {
+            return "";
+        }
+    }
 }
 
 
@@ -127,18 +139,17 @@ var mainPage = {
         },
 
         additionToCount(purchaseAmount) {
-            let possibleValues = this.currItem.maxCount - this.currItem.count;
             let haveEnoughMoney = Controller.haveEnoughMoney(this.currItem);
-            console.log(this.currItem.maxCount)
-            if (this.currItem.maxCount === "∞"){
+            let additionType = Controller.determineAdditionType(this.currItem, purchaseAmount);
+            if (additionType === "ETF"){
                 this.currItem.count += Number(purchaseAmount);
                 this.switchShowItemInfo();
                 return;
             };
-            if (this.currItem.count < this.currItem.maxCount && purchaseAmount <= possibleValues){
+            if (additionType === "addition"){
                 this.currItem.count += Number(purchaseAmount);
                 this.switchShowItemInfo();
-            } else if (this.currItem.count === this.currItem.maxCount) {
+            } else if (additionType === "alreadyMaxCount") {
                 this.switchShowItemInfo();
             } else {
                 alert("This quantity is not available for purchase. \n Please change the value to " + possibleValues + " or less.")
