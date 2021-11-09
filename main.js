@@ -147,27 +147,9 @@ var mainPage = {
         },
 
         pushPurchaseBtn(purchaseAmount) {
-            this.additionToCount(purchaseAmount);
-        },
+            if(!this.additionToCount(purchaseAmount)) {
+                let quantityAvailablePurchase = Controller.quantityAvailablePurchase(this.currItem.price, this.currItem.maxCount - purchaseAmount, this.user.money);
 
-        additionToCount(purchaseAmount) {
-            let totalAmount = this.currItem.price * purchaseAmount;
-            let haveEnoughMoney = Controller.haveEnoughMoney(totalAmount, this.user.money);
-            let additionType = Controller.determineAdditionType(this.currItem, purchaseAmount);
-            let quantityAvailablePurchase = Controller.quantityAvailablePurchase(this.currItem.price, this.currItem.maxCount - purchaseAmount, this.user.money);
-
-            if (haveEnoughMoney && additionType === "ETF"){
-                this.currItem.count += Number(purchaseAmount);
-                this.switchShowItemInfo();
-                return;
-            };
-
-            if (haveEnoughMoney && additionType === "addition"){
-                this.currItem.count += Number(purchaseAmount);
-                this.switchShowItemInfo();
-            } else if (additionType === "alreadyMaxCount") {
-                this.switchShowItemInfo();
-            } else {
                 if (quantityAvailablePurchase == 0) {
                     alert("You can't buy one.\nPlease make money.");
                 } else {
@@ -176,8 +158,33 @@ var mainPage = {
             }
         },
 
-        drawMoney() {
+        additionToCount(purchaseAmount) {
+            let totalAmount = this.currItem.price * purchaseAmount;
+            let additionType = Controller.determineAdditionType(this.currItem, purchaseAmount);
+            let haveEnoughMoney = Controller.haveEnoughMoney(totalAmount, this.user.money);
 
+            if (haveEnoughMoney && additionType === "ETF"){
+                this.currItem.count += Number(purchaseAmount);
+                this.switchShowItemInfo();
+                return true;
+            };
+
+            if (haveEnoughMoney && additionType === "addition"){
+                this.currItem.count += Number(purchaseAmount);
+                this.withdrawMoney(totalAmount);
+                this.switchShowItemInfo();
+
+            }
+
+            else if (additionType === "alreadyMaxCount") this.switchShowItemInfo();
+
+            else return false;
+
+            return true;
+        },
+
+        withdrawMoney(moneyToWithdraw) {
+            this.user.money -= moneyToWithdraw;
         },
 
         depositMoney(moneyToDeposit) {
