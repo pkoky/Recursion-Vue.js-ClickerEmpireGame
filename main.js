@@ -129,9 +129,15 @@ var mainPage = {
         additionToCount(purchaseAmount) {
             let possibleValues = this.currItem.maxCount - this.currItem.count;
             let haveEnoughMoney = Controller.haveEnoughMoney(this.currItem);
-            if (this.currItem.count < this.currItem.maxCount && purchaseAmount <= possibleValues){
-                this.switchShowItemInfo();
+            console.log(this.currItem.maxCount)
+            if (this.currItem.maxCount === "∞"){
                 this.currItem.count += Number(purchaseAmount);
+                this.switchShowItemInfo();
+                return;
+            };
+            if (this.currItem.count < this.currItem.maxCount && purchaseAmount <= possibleValues){
+                this.currItem.count += Number(purchaseAmount);
+                this.switchShowItemInfo();
             } else if (this.currItem.count === this.currItem.maxCount) {
                 this.switchShowItemInfo();
             } else {
