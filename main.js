@@ -43,7 +43,7 @@ class User {
 
 class Controller {
     static createUser(name) {
-        return new User(name, 20, 0, 500000, 0)
+        return new User(name, 20, 0, 50000000, 0)
     }
 
     static createItemsArr () {
@@ -111,7 +111,7 @@ class Controller {
 
     static calculateEffectOfETF(item) {
         let totalAmount = item.price * item.count;
-        return (totalAmount/100) * item.effect;
+        return Math.floor((totalAmount/100) * item.effect);
     }
 
 }
@@ -176,7 +176,7 @@ var mainPage = {
                 this.currItem.count += Number(purchaseAmount);
                 this.withdrawMoney(totalAmount);
                 this.switchShowItemInfo();
-
+                if (additionType === "ETF") this.currItem.price = Math.floor(this.currItem.price * 1.1);
             }
 
             else if (additionType === "alreadyMaxCount") this.switchShowItemInfo();
@@ -230,7 +230,7 @@ var mainPage = {
     },
 
     created: function() {
-        setInterval(this.timerControl, 100);
+        setInterval(this.timerControl, 1000);
     },
 
     components: {
