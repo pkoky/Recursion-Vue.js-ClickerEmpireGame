@@ -78,8 +78,9 @@ class Controller {
         }
     }
 
-    static haveEnoughMoney() {
-
+    static haveEnoughMoney(totalAmount, money) {
+        if (totalAmount <= money) return true;
+        else return false;
     }
 
     static determineAdditionType(item, purchaseAmount) {
@@ -92,6 +93,10 @@ class Controller {
         } else {
             return "";
         }
+    }
+
+    static quantityAvailablePurchase() {
+        
     }
 }
 
@@ -139,21 +144,31 @@ var mainPage = {
         },
 
         additionToCount(purchaseAmount) {
-            let haveEnoughMoney = Controller.haveEnoughMoney(this.currItem);
+            let totalAmount = this.currItem.price * purchaseAmount;
+            let haveEnoughMoney = Controller.haveEnoughMoney(totalAmount, this.user.money);
             let additionType = Controller.determineAdditionType(this.currItem, purchaseAmount);
-            if (additionType === "ETF"){
+            let quantityAvailablePurchase = Controller.quantityAvailablePurchase()
+
+            if (haveEnoughMoney && additionType === "ETF"){
                 this.currItem.count += Number(purchaseAmount);
                 this.switchShowItemInfo();
                 return;
             };
-            if (additionType === "addition"){
+            if (haveEnoughMoney && additionType === "addition"){
                 this.currItem.count += Number(purchaseAmount);
                 this.switchShowItemInfo();
+                console.log("if")
             } else if (additionType === "alreadyMaxCount") {
+                console.log("else if")
                 this.switchShowItemInfo();
             } else {
-                alert("This quantity is not available for purchase. \n Please change the value to " + possibleValues + " or less.")
+                console.log("else")
+                alert("This quantity is not available for purchase. \n Please change the value to "  + " or less.")
             }
+        },
+
+        drawMoney() {
+
         }
     },
     components: {
