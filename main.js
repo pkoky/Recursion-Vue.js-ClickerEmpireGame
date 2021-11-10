@@ -42,10 +42,7 @@ class User {
 
 
 class Controller {
-    static createUser(name) {
-        return new User(name, 20, 0, 50000, 0)
-    }
-
+    
     static createItemsArr () {
         const itemObjArray = [
             new Item("Flip Machine", "ability", images["FlipMachine"], 15000, 0, 25, 1, 500),
@@ -62,27 +59,19 @@ class Controller {
         ]
         return itemObjArray;
     }
-
     
-
-    static displayNone(id) {
-        let page = document.getElementById(id)
-        page.classList.add("d-none");
+    
+    static calculateEffect(item) {
+        return item.effect * item.count;
     }
-
-    static switchWrapperVh() {
-        let wrapper = document.getElementById("wrapper");
-        if (wrapper.classList.contains("vh-100")) {
-            wrapper.classList.remove("vh-100");
-        }
-        else {
-            wrapper.classList.add("vh-100")
-        }
+    
+    static calculateEffectOfETF(item) {
+        let totalAmount = item.price * item.count;
+        return Math.floor((totalAmount/100) * item.effect);
     }
-
-    static haveEnoughMoney(totalAmount, money) {
-        if (totalAmount <= money) return true;
-        else return false;
+    
+    static createUser(name) {
+        return new User(name, 20, 0, 50000, 0)
     }
 
     static determineAdditionType(item, purchaseAmount) {
@@ -96,22 +85,33 @@ class Controller {
             return "";
         }
     }
-
+    
+    static displayNone(id) {
+        let page = document.getElementById(id)
+        page.classList.add("d-none");
+    }
+    
+    static haveEnoughMoney(totalAmount, money) {
+        if (totalAmount <= money) return true;
+        else return false;
+    }
+    
     static quantityAvailablePurchase(price, remainingQuantity, money) {
         let quantityForMoney = Math.floor(money / price);
-
+        
         if (quantityForMoney == 0) return 0;
         else if (quantityForMoney <= remainingQuantity || remainingQuantity <= 0 || isNaN(remainingQuantity)) return quantityForMoney;
         else return remainingQuantity;
     }
-
-    static calculateEffect(item) {
-        return item.effect * item.count;
-    }
-
-    static calculateEffectOfETF(item) {
-        let totalAmount = item.price * item.count;
-        return Math.floor((totalAmount/100) * item.effect);
+    
+    static switchWrapperVh() {
+        let wrapper = document.getElementById("wrapper");
+        if (wrapper.classList.contains("vh-100")) {
+            wrapper.classList.remove("vh-100");
+        }
+        else {
+            wrapper.classList.add("vh-100")
+        }
     }
 }
 
@@ -144,32 +144,19 @@ var mainPage = {
     },
     template: '#mainPage',
     methods: {
-        showItemInfoPage(currItem) {
-            this.switchShowItemInfo()
-            this.currItem = currItem;
-        },
-
-        switchShowItemInfo() {
-            this.showItemInfo = !this.showItemInfo;
-        },
-
-        pushPurchaseBtn(purchaseAmount) {
-            if(!this.additionToCount(purchaseAmount)) {
-                let quantityAvailablePurchase = Controller.quantityAvailablePurchase(this.currItem.price, this.currItem.maxCount - purchaseAmount, this.user.money);
-
-                if (quantityAvailablePurchase == 0) {
-                    alert("You can't buy one.\nPlease make money.");
-                } else {
-                    alert("This quantity is not available for purchase. \nPlease change the value to " + quantityAvailablePurchase + " or less.")
-                }
+        addDaysAndAge() {
+            this.user.days++;
+            if (this.user.days == 365) {
+                this.user.age++;
+                this.user.days = 0;
             }
         },
-
+        
         additionToCount(purchaseAmount) {
             let totalAmount = this.currItem.price * purchaseAmount;
             let additionType = Controller.determineAdditionType(this.currItem, purchaseAmount);
             let haveEnoughMoney = Controller.haveEnoughMoney(totalAmount, this.user.money);
-
+            
             if (haveEnoughMoney && (additionType === "addition" || additionType === "ETF")){
                 this.currItem.count += Number(purchaseAmount);
                 this.withdrawMoney(totalAmount);
@@ -178,39 +165,11 @@ var mainPage = {
             }
 
             else if (additionType === "alreadyMaxCount") this.switchShowItemInfo();
-
             else return false;
 
             return true;
         },
-
-        withdrawMoney(moneyToWithdraw) {
-            this.user.money -= moneyToWithdraw;
-        },
-
-        depositMoney(moneyToDeposit) {
-            this.user.money += moneyToDeposit;
-        },
-
-        clickBurger() {
-            this.user.burger++;
-            let effect = Controller.calculateEffect(this.user.purchasedItems[0]);
-            this.depositMoney(effect);
-        },
-
-        timerControl() {
-            this.addDaysAndAge();
-            this.addMoneyForItemsPerSecond();
-        },
-
-        addDaysAndAge() {
-            this.user.days++;
-            if (this.user.days == 365) {
-                this.user.age++;
-                this.user.days = 0;
-            }
-        },
-
+        
         addMoneyForItemsPerSecond() {
             let items = this.user.purchasedItems;
             for (let item of items) {
@@ -224,19 +183,33 @@ var mainPage = {
                 }
             }
         },
+        
+        clickBurger() {
+            this.user.burger++;
+            let effect = Controller.calculateEffect(this.user.purchasedItems[0]);
+            this.depositMoney(effect);
+        },
 
-        pushSaveBtn() {
-            if (window.confirm('保存しますか？')) {
-                let jsonEncoded = JSON.stringify(this.user);
-                localStorage.setItem(this.user.name, jsonEncoded);
-                alert('保存しました。');
-            } else return;
+        depositMoney(moneyToDeposit) {
+            this.user.money += moneyToDeposit;
         },
 
         getBurgerEffect() {
             return Controller.calculateEffect(this.user.purchasedItems[0]); 
         },
-
+        
+        pushPurchaseBtn(purchaseAmount) {
+            if(!this.additionToCount(purchaseAmount)) {
+                let quantityAvailablePurchase = Controller.quantityAvailablePurchase(this.currItem.price, this.currItem.maxCount - purchaseAmount, this.user.money);
+                
+                if (quantityAvailablePurchase == 0) {
+                    alert("You can't buy one.\nPlease make money.");
+                } else {
+                    alert("This quantity is not available for purchase. \nPlease change the value to " + quantityAvailablePurchase + " or less.")
+                }
+            }
+        },
+        
         pushResetBtn() {
             let result = window.confirm('リセットしますか？')
             if (!result) return;
@@ -244,7 +217,34 @@ var mainPage = {
                 localStorage.removeItem(this.user.name);
             }
             this.$emit('reset-data', this.user.name);
-        }
+        },
+        
+        pushSaveBtn() {
+            if (window.confirm('保存しますか？')) {
+                let jsonEncoded = JSON.stringify(this.user);
+                localStorage.setItem(this.user.name, jsonEncoded);
+                alert('保存しました。');
+            } else return;
+        },
+        
+        showItemInfoPage(currItem) {
+            this.switchShowItemInfo()
+            this.currItem = currItem;
+        },
+
+        switchShowItemInfo() {
+            this.showItemInfo = !this.showItemInfo;
+        },
+
+        timerControl() {
+            this.addDaysAndAge();
+            this.addMoneyForItemsPerSecond();
+        },
+
+        withdrawMoney(moneyToWithdraw) {
+            this.user.money -= moneyToWithdraw;
+        },
+
     },
 
     created: function() {
