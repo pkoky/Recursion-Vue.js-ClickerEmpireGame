@@ -43,7 +43,7 @@ class User {
 
 class Controller {
     static createUser(name) {
-        return new User(name, 20, 0, 50000000, 0)
+        return new User(name, 20, 0, 50000, 0)
     }
 
     static createItemsArr () {
@@ -226,9 +226,11 @@ var mainPage = {
         },
 
         pushSaveBtn() {
-            let jsonEncoded = JSON.stringify(this.user);
-            console.log(jsonEncoded)
-            localStorage.setItem(this.user.name, jsonEncoded);
+            if (window.confirm('保存しますか？')); {
+                let jsonEncoded = JSON.stringify(this.user);
+                localStorage.setItem(this.user.name, jsonEncoded);
+                alert('保存しました。');
+            }
         },
 
         getBurgerEffect() {
@@ -268,14 +270,19 @@ var vm = new Vue({
                 alert('名前を入力してください。');
                 return;
             };
+
             this.userObj = Controller.createUser(this.userName);
             this.switchPage();
         },
 
         getLoginData() {
-            if (this.userName in localStorage) {
                 let jsonDecoded = JSON.parse(localStorage.getItem(this.userName));
-                this.userObj = jsonDecoded;
+                return jsonDecoded;
+        },
+
+        pushLoginBtn() {
+            if (this.userName in localStorage) {
+                this.userObj = this.getLoginData();
                 this.switchPage();
             } else {
                 alert('データがありません。\n新しく始めてください。');
@@ -283,7 +290,6 @@ var vm = new Vue({
         },
 
         resetData(userName) {
-            console.log(userName)
             this.userObj = Controller.createUser(userName)
         },
 
