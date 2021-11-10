@@ -226,11 +226,11 @@ var mainPage = {
         },
 
         pushSaveBtn() {
-            if (window.confirm('保存しますか？')); {
+            if (window.confirm('保存しますか？')) {
                 let jsonEncoded = JSON.stringify(this.user);
                 localStorage.setItem(this.user.name, jsonEncoded);
                 alert('保存しました。');
-            }
+            } else return;
         },
 
         getBurgerEffect() {
@@ -296,7 +296,7 @@ var vm = new Vue({
                     this.userObj = Controller.createUser(this.userName);
                     this.switchPage();
                 }
-            } 
+            }
             else this.startGame();
         },
 

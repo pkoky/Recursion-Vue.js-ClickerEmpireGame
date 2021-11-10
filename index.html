@@ -99,7 +99,7 @@
 
                     <div v-if="!showItemInfo" class="items vh-100 bg-dark d-flex flex-column align-items-center p-3 rounded overflow-auto mb-5 border border-light">  
                         <!-- eachItem -->
-                        <div v-for="eachItem in itemsArr" v-on:click="showItemInfoPage(eachItem)" class="bg-secondary col-12 d-flex justify-content-around border border-light p-2 mb-3 rounded">
+                        <div v-for="eachItem in itemsArr" v-on:click="showItemInfoPage(eachItem)" role="button" class="itemCard bg-secondary col-12 d-flex justify-content-around border border-light p-2 mb-3 rounded">
                             <div class="imgArea col-3">
                                 <img v-bind:src="eachItem.imageUrl" alt="" class="col-12">
                             </div>
