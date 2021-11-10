@@ -266,11 +266,6 @@ var vm = new Vue({
     },
     methods: {
         startGame() {
-            if (this.userName == '') {
-                alert('名前を入力してください。');
-                return;
-            };
-
             this.userObj = Controller.createUser(this.userName);
             this.switchPage();
         },
@@ -282,11 +277,32 @@ var vm = new Vue({
 
         pushLoginBtn() {
             if (this.userName in localStorage) {
-                this.userObj = this.getLoginData();
-                this.switchPage();
+                this.loginGame();
             } else {
                 alert('データがありません。\n新しく始めてください。');
             }
+        },
+
+        pushNewBtn() {
+            if (this.userName == '') {
+                alert('名前を入力してください。');
+                return;
+            };
+            if (this.userName in localStorage) {
+                if (window.confirm('保存データがありますが続きから始めますか？')) {
+                    this.loginGame();
+                } else {
+                    alert('新しく始めます。')
+                    this.userObj = Controller.createUser(this.userName);
+                    this.switchPage();
+                }
+            } 
+            else this.startGame();
+        },
+
+        loginGame() {
+            this.userObj = this.getLoginData();
+            this.switchPage();
         },
 
         resetData(userName) {
