@@ -261,7 +261,7 @@ var vm = new Vue({
     el: '#wrapper',
     data: {
         showMainPage: false,
-        userName: '',
+        userName: 'k',
         userObj: '',
     },
     methods: {

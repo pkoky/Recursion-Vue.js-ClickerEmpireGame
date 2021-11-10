@@ -18,15 +18,15 @@
 </head>
 <body>
     <div id="wrapper" class="wrapper vh-100 d-flex justify-content-center align-items-center">
-        <main-page
-            v-if="(!userObj == '')"
-            v-show="showMainPage"
-            class=""
-            v-bind:user="userObj"
-            v-on:reset-data="resetData($event)"
+        <transition name="mainPage">
+            <main-page
+                v-if="(!userObj == '')"
+                v-show="showMainPage"
+                v-bind:user="userObj"
+                v-on:reset-data="resetData($event)"
             >
-        </main-page>
-
+            </main-page>
+        </transition>
         <div v-show="!showMainPage">
             <div class="col-12 col-md-10 text-white d-flex justify-content-center align-items-start flex-wrap p-3">
                 <div id="startGamePage" class="bg-white text-dark d-flex justify-content-center align-items-center p-4 rounded">
@@ -49,6 +49,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 
     <!-- mainPageTemplate -->
@@ -99,7 +100,7 @@
 
                     <div v-if="!showItemInfo" class="items vh-100 bg-dark d-flex flex-column align-items-center p-3 rounded overflow-auto mb-5 border border-light">  
                         <!-- eachItem -->
-                        <div v-for="eachItem in itemsArr" v-on:click="showItemInfoPage(eachItem)" role="button" class="itemCard bg-secondary col-12 d-flex justify-content-around border border-light p-2 mb-3 rounded">
+                        <div v-for="eachItem in itemsArr" v-on:click="showItemInfoPage(eachItem)" role="button" class="bg-secondary col-12 d-flex justify-content-around border border-light p-2 mb-3 rounded">
                             <div class="imgArea col-3">
                                 <img v-bind:src="eachItem.imageUrl" alt="" class="col-12">
                             </div>
@@ -128,7 +129,7 @@
 
 <!-- itemInfoTemplate -->
     <script type="text/x-template" id="itemInfoPage">
-        <div class="items h-100 bg-dark d-flex flex-column align-items-center p-3 rounded overflow-auto mb-5 border border-light">
+        <div class="items vh-100 bg-dark d-flex flex-column align-items-center p-3 rounded overflow-auto mb-5 border border-light">
             <div class="itemInfo col-12 bg-secondary d-flex flex-column justify-content-around border p-3 mb-3 rounded">
                 <div class="detail col-12 d-flex align-items-center pe-3">
                     <div class="col-8">
