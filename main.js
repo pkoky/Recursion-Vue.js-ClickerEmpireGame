@@ -95,6 +95,11 @@ class Controller {
         else return false;
     }
 
+    static getLoginData(userName) {
+        let jsonDecoded = JSON.parse(localStorage.getItem(userName));
+        return jsonDecoded;
+    }
+
     static getNumOfSecond() {
         let num = window.prompt("何倍速で進めましょうか？\n半角数字、0以上の値で入力してください。");
         if (num != null && num > 0) return num;
@@ -305,7 +310,7 @@ var vm = new Vue({
             }
         },
 
-        newBtn(test) {
+        newBtn() {
             if (this.userName in localStorage) {
                 if (window.confirm('保存データがありますが続きから始めますか？')) {
                     this.loginGame();
