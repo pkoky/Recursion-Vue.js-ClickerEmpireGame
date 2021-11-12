@@ -113,6 +113,12 @@ class Controller {
         else if (quantityForMoney <= remainingQuantity || remainingQuantity <= 0 || isNaN(remainingQuantity)) return quantityForMoney;
         else return remainingQuantity;
     }
+
+    static saveData(user) {
+        let jsonEncoded = JSON.stringify(user);
+        localStorage.setItem(user.name, jsonEncoded);
+        alert('保存しました。');
+    }
     
     static switchWrapperVh() {
         let wrapper = document.getElementById("wrapper");
@@ -231,11 +237,8 @@ var mainPage = {
         },
         
         pushSaveBtn() {
-            if (window.confirm('保存しますか？')) {
-                let jsonEncoded = JSON.stringify(this.user);
-                localStorage.setItem(this.user.name, jsonEncoded);
-                alert('保存しました。');
-            } else return;
+            if (window.confirm('保存しますか？')) Controller.saveData(this.user);
+            else return;
         },
         
         showItemInfoPage(currItem) {
