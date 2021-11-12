@@ -38,6 +38,16 @@ class User {
         this.burger = burger;
         this.purchasedItems = Controller.createItemsArr();
     }
+
+    addDaysAndAge() {
+        this.days++;
+        if (this.days == 365) {
+            this.age++;
+            this.days = 0;
+        }
+    }
+
+    
 }
 
 
@@ -144,14 +154,6 @@ var mainPage = {
     },
     template: '#mainPage',
     methods: {
-        addDaysAndAge() {
-            this.user.days++;
-            if (this.user.days == 365) {
-                this.user.age++;
-                this.user.days = 0;
-            }
-        },
-        
         additionToCount(purchaseAmount) {
             let totalAmount = this.currItem.price * purchaseAmount;
             let additionType = Controller.determineAdditionType(this.currItem, purchaseAmount);
@@ -237,7 +239,7 @@ var mainPage = {
         },
 
         timerControl() {
-            this.addDaysAndAge();
+            this.user.addDaysAndAge();
             this.addMoneyForItemsPerSecond();
         },
 
