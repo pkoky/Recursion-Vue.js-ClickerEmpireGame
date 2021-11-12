@@ -94,6 +94,12 @@ class Controller {
         if (totalAmount <= money) return true;
         else return false;
     }
+
+    static getNumOfSecond() {
+        let num = window.prompt("何倍速で進めましょうか？\n半角数字、0以上の値で入力してください。");
+        if (num != null && num > 0) return num;
+        return 0;
+    }
     
     static quantityAvailablePurchase(price, remainingQuantity, money) {
         let quantityForMoney = Math.floor(money / price);
@@ -247,7 +253,7 @@ var mainPage = {
     },
 
     created: function() {
-        let num = 1000;
+        let num = this.numofsecond > 0 ? 1000 / this.numofsecond : 1000;
         setInterval(this.timerControl, num);
     },
 
@@ -276,12 +282,22 @@ var vm = new Vue({
                 return jsonDecoded;
         },
 
-        pushLoginBtn() {
-            if (this.userName === "Trick") {
+        pushBtn(btnType) {
+            if (this.userName === "Trick") {  // 裏コード
                 this.trick();
-                this.userName = '';
                 return;
             }
+
+            if (this.userName == '') {
+                alert('名前を入力してください。');
+                return;
+            };
+
+            if (btnType === 'new') this.newBtn();
+            if (btnType === 'login') this.loginBtn();
+        },
+
+        loginBtn() {
             if (this.userName in localStorage) {
                 this.loginGame();
             } else {
@@ -289,20 +305,13 @@ var vm = new Vue({
             }
         },
 
-        pushNewBtn() {
-            console.log(this.numOfSecond)
-
-            if (this.userName == '') {
-                alert('名前を入力してください。');
-                return;
-            };
+        newBtn(test) {
             if (this.userName in localStorage) {
                 if (window.confirm('保存データがありますが続きから始めますか？')) {
                     this.loginGame();
                 } else {
                     alert('新しく始めます。')
-                    this.userObj = Controller.createUser(this.userName);
-                    this.switchPage();
+                    this.startGame();
                 }
             }
             else this.startGame();
@@ -318,13 +327,13 @@ var vm = new Vue({
         },
 
         trick() {
-            num = window.prompt("何倍速で進めましょうか？\n半角数字、0以上の値で入力してください。");
-            this.numOfSecond = (num != null) && (num > 0) ? num : 0;
+            this.numOfSecond = Controller.getNumOfSecond();
             if (this.numOfSecond == 0) {
                 alert('通常スピードでスタートします。')
             } else {
                 alert(this.numOfSecond + "倍速でスタートします。")
             }
+            this.userName = '';
         },
 
         switchPage() {
