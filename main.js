@@ -168,15 +168,19 @@ var mainPage = {
             }
         },
 
+        addCountAndMoney(purchaseAmount, totalAmount) {
+            this.currItem.count += Number(purchaseAmount);
+            this.withdrawMoney(totalAmount);
+            this.switchShowItemInfo();
+        },
+
         additionToCount(purchaseAmount) {
             let totalAmount = this.currItem.price * purchaseAmount;
             let additionType = Controller.determineAdditionType(this.currItem, purchaseAmount);
             let haveEnoughMoney = Controller.haveEnoughMoney(totalAmount, this.user.money);
             
             if (haveEnoughMoney && (additionType === "addition" || additionType === "ETF")){
-                this.currItem.count += Number(purchaseAmount);
-                this.withdrawMoney(totalAmount);
-                this.switchShowItemInfo();
+                this.addCountAndMoney(purchaseAmount, totalAmount)
                 if (additionType === "ETF") this.currItem.price = Math.floor(this.currItem.price * 1.1);
             }
 
