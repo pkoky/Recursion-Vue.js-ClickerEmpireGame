@@ -282,11 +282,6 @@ var vm = new Vue({
             this.switchPage();
         },
 
-        getLoginData() {
-                let jsonDecoded = JSON.parse(localStorage.getItem(this.userName));
-                return jsonDecoded;
-        },
-
         pushBtn(btnType) {
             if (this.userName === "Trick") {  // 裏コード
                 this.trick();
@@ -323,7 +318,7 @@ var vm = new Vue({
         },
 
         loginGame() {
-            this.userObj = this.getLoginData();
+            this.userObj = Controller.getLoginData(this.userName);
             this.switchPage();
         },
 
