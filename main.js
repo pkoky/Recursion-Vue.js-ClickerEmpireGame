@@ -70,7 +70,7 @@ class Controller {
     }
     
     static createUser(name) {
-        return new User(name, 20, 0, 5000000, 0)
+        return new User(name, 20, 0, 5000000000000000, 0)
     }
 
     static determineAdditionType(item, purchaseAmount) {
@@ -221,7 +221,8 @@ var mainPage = {
         
         pushPurchaseBtn(purchaseAmount) {
             if(!this.additionToCount(purchaseAmount)) {
-                let quantityAvailablePurchase = Controller.quantityAvailablePurchase(this.currItem.price, this.currItem.maxCount - purchaseAmount, this.user.money);
+                let remainingQuantity = this.currItem.maxCount - this.currItem.count;
+                let quantityAvailablePurchase = Controller.quantityAvailablePurchase(this.currItem.price, remainingQuantity, this.user.money);
                 
                 if (quantityAvailablePurchase == 0) {
                     alert("You can't buy one.\nPlease make money.");
@@ -232,12 +233,13 @@ var mainPage = {
         },
         
         pushResetBtn() {
-            let result = window.confirm('リセットしますか？')
+            let result = window.confirm('リセットしますか？\nセーブデータもリセットされますがよろしいですか？')
             if (!result) return;
             if (this.user.name in localStorage) {
                 localStorage.removeItem(this.user.name);
             }
             this.$emit('reset-data', this.user.name);
+            alert('データをリセットしました。');
         },
         
         pushSaveBtn() {

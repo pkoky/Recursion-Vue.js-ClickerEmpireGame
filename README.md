@@ -1,12 +1,10 @@
 <h1 align="center">Click Empire Game</h1>
 
-URL
+**URL**
 
 https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 
 ---
-
-##
 
 ![image](https://user-images.githubusercontent.com/78239360/141071949-2e31d36b-75af-4fe1-85f3-50658d837df7.png)
 
@@ -14,7 +12,8 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 
 ---
 
-コンピュータサイエンス学習プラットフォーム、[Recursion](https://recursionist.io/dashboard/users/koky) CS の課題です。  
+コンピュータサイエンス学習プラットフォーム、[Recursion](https://recursionist.io/dashboard/users/koky) CS の課題です。
+
 課題内容は
 
 > 仕事や投資、不動産等でお金を稼ぐ「Clicker Empire Game」というシミュレーションゲームを作成する。　　
@@ -37,43 +36,44 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 ---
 
 <details>
-<summary align="center">レイアウトについて</summary>
+<summary>レイアウトについて</summary>
 <div>
 
-View は[課題サンプル](https://recursionist.io/private/general/html/project3/clicker-empire-game.html)を参考にしました。  
+レイアウトは[課題サンプル](https://recursionist.io/private/general/html/project3/clicker-empire-game.html)を参考にしました。  
 その上で下記のテーマを設定しました。
 
+```
 - ユーザーが見やすくわかりやすいこと
-- CSS を使わず Bootstrap のみでどんなものが作れるのか
+- CSS を出来るだけ使わず、Bootstrapのみでどんなものが作れるのか
+```
 
 </div>
 </details>
 
 <details>
-<summary align="center">機能面について</summary>
+<summary>機能面について</summary>
 <div>
 
 下記のことを意識しました。
 
+```
 - 出来る限り 1 つのメソッドに 1 つの役割
 - 英語を読むように理解できる変数名
-- </div>
-  </details>
-
-## Feature
-
-- アイテム購入機能
-  - アイテムがもつタイプに応じて、購入することで得られる利益を計算します。
-- 収入獲得機能
-  - ハンバーガーをクリックするか、１秒経過するごとに、収入を得ることができます。
-
-## Installation
-
-```
-$ git clone https://github.com/moyongkexing/clicker-empire-game.git
-$ cd clicker-empire-game
 ```
 
-## Author
+</div>
+</details>
 
-Twitter: [mo4g_dev](https://twitter.com/mo4g_dev)
+<h3 align="center">見ていただく際に</h3>
+
+---
+
+裏コードを設定してあります。
+
+名前入力の際に、
+
+> Trick
+
+と入力していただくと、倍速設定ができます。
+
+試していただく際にご活用いただければと思います。
