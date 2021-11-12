@@ -23,6 +23,7 @@
                 v-if="(!userObj == '')"
                 v-show="showMainPage"
                 v-bind:user="userObj"
+                v-bind:numofsecond="numOfSecond"
                 v-on:reset-data="resetData($event)"
             >
             </main-page>

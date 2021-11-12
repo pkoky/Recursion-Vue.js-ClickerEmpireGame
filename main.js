@@ -38,16 +38,6 @@ class User {
         this.burger = burger;
         this.purchasedItems = Controller.createItemsArr();
     }
-
-    addDaysAndAge() {
-        this.days++;
-        if (this.days == 365) {
-            this.age++;
-            this.days = 0;
-        }
-    }
-
-    
 }
 
 
@@ -70,7 +60,6 @@ class Controller {
         return itemObjArray;
     }
     
-    
     static calculateEffect(item) {
         return item.effect * item.count;
     }
@@ -81,7 +70,7 @@ class Controller {
     }
     
     static createUser(name) {
-        return new User(name, 20, 0, 50000, 0)
+        return new User(name, 20, 0, 5000000, 0)
     }
 
     static determineAdditionType(item, purchaseAmount) {
@@ -143,7 +132,7 @@ var itemInfo = {
 
 
 var mainPage = {
-    props:['user'],
+    props:['user', 'numofsecond'],
     data: function () {
       return {
         isShowItemInfo: false,
@@ -154,6 +143,14 @@ var mainPage = {
     },
     template: '#mainPage',
     methods: {
+        addDaysAndAge()  {
+            this.user.days++;
+            if (this.user.days == 365) {
+                this.user.age++;
+                this.user.days = 0;
+            }
+        },
+
         additionToCount(purchaseAmount) {
             let totalAmount = this.currItem.price * purchaseAmount;
             let additionType = Controller.determineAdditionType(this.currItem, purchaseAmount);
@@ -196,6 +193,7 @@ var mainPage = {
             this.user.money += moneyToDeposit;
         },
 
+        
         getBurgerEffect() {
             return Controller.calculateEffect(this.user.purchasedItems[0]); 
         },
@@ -239,18 +237,18 @@ var mainPage = {
         },
 
         timerControl() {
-            this.user.addDaysAndAge();
+            this.addDaysAndAge();
             this.addMoneyForItemsPerSecond();
         },
 
         withdrawMoney(moneyToWithdraw) {
             this.user.money -= moneyToWithdraw;
         },
-
     },
 
     created: function() {
-        setInterval(this.timerControl, 1000);
+        let num = 1000;
+        setInterval(this.timerControl, num);
     },
 
     components: {
@@ -265,6 +263,7 @@ var vm = new Vue({
         showMainPage: false,
         userName: '',
         userObj: '',
+        numOfSecond: 0,
     },
     methods: {
         startGame() {
@@ -278,6 +277,11 @@ var vm = new Vue({
         },
 
         pushLoginBtn() {
+            if (this.userName === "Trick") {
+                this.trick();
+                this.userName = '';
+                return;
+            }
             if (this.userName in localStorage) {
                 this.loginGame();
             } else {
@@ -286,6 +290,8 @@ var vm = new Vue({
         },
 
         pushNewBtn() {
+            console.log(this.numOfSecond)
+
             if (this.userName == '') {
                 alert('名前を入力してください。');
                 return;
@@ -309,6 +315,16 @@ var vm = new Vue({
 
         resetData(userName) {
             this.userObj = Controller.createUser(userName)
+        },
+
+        trick() {
+            num = window.prompt("何倍速で進めましょうか？\n半角数字、0以上の値で入力してください。");
+            this.numOfSecond = (num != null) && (num > 0) ? num : 0;
+            if (this.numOfSecond == 0) {
+                alert('通常スピードでスタートします。')
+            } else {
+                alert(this.numOfSecond + "倍速でスタートします。")
+            }
         },
 
         switchPage() {
