@@ -6,7 +6,7 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 
 ---
 
-![image](https://user-images.githubusercontent.com/78239360/141071949-2e31d36b-75af-4fe1-85f3-50658d837df7.png)
+![demo](https://user-images.githubusercontent.com/78239360/141727083-9580ae05-dfe5-4f39-be1e-ebd805efc1e2.gif)
 
 <h3 align="center">Project概要</h3>
 
@@ -71,6 +71,7 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 裏コードを設定してあります。
 
 名前入力の際に、
+
 ```
 Trick
 ```
@@ -78,3 +79,5 @@ Trick
 と入力していただくと、倍速設定ができます。
 
 ご活用ください。
+
+![demo-Trick](https://user-images.githubusercontent.com/78239360/141728653-c11b468a-a263-4895-a917-9be5cb8fd8c0.gif)
