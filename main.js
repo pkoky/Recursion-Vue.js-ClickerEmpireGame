@@ -70,7 +70,7 @@ class Controller {
     }
     
     static createUser(name) {
-        return new User(name, 20, 0, 5000000000000000, 0)
+        return new User(name, 20, 0, 50000, 0)
     }
 
     static determineAdditionType(item, purchaseAmount) {
@@ -137,7 +137,7 @@ var itemInfo = {
     template: '#itemInfoPage',
     data: function() {
         return {
-            purchaseAmount: 0,
+            purchaseAmount: 1,
         }
     },
     methods: {

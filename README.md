@@ -39,7 +39,7 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 <summary>レイアウトについて</summary>
 <div>
 
-レイアウトは[課題サンプル](https://recursionist.io/private/general/html/project3/clicker-empire-game.html)を参考にしました。  
+レイアウトは課題サンプルがあったので、そちらを参考にしました。  
 その上で下記のテーマを設定しました。
 
 ```
@@ -71,9 +71,10 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 裏コードを設定してあります。
 
 名前入力の際に、
-
-> Trick
+```
+Trick
+```
 
 と入力していただくと、倍速設定ができます。
 
-試していただく際にご活用いただければと思います。
+ご活用ください。
