@@ -6,9 +6,9 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 
 ---
 
-![demo](https://user-images.githubusercontent.com/78239360/141727083-9580ae05-dfe5-4f39-be1e-ebd805efc1e2.gif)
+![newdemo](https://user-images.githubusercontent.com/78239360/141881283-87effcea-78f9-43fc-83a9-54c459cf56cd.gif)
 
-<h3 align="center">Project概要</h3>
+<h2>Project概要</h2>
 
 ---
 
@@ -21,7 +21,7 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 
 というものです。
 
-<h3 align="center">使用言語、ツール</h3>
+<h2>使用言語、ツール</h2>
 
 ---
 
@@ -31,7 +31,17 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 - JavaScript
 - [Vue.js](https://jp.vuejs.org/index.html)
 
-<h3 align="center">拘ったポイント</h3>
+<h2>遊び方</h2>
+所持金$50000からスタートします。
+
+資産を増やしていき、大富豪を目指しましょう。
+
+お金の増やし方は２通りあります。
+
+- ハンバーガーをクリックする（得られるお金は FilipMachine の数に影響されます）
+- 投資や事業により、時間の経過によって稼ぐ（FLipMachine 以外のものが対象となります）
+
+<h2>拘ったポイント</h2>
 
 ---
 
@@ -40,11 +50,11 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 <div>
 
 レイアウトは課題サンプルがあったので、そちらを参考にしました。  
-その上で下記のテーマを設定しました。
+その上で下記のことを意識しました。
 
 ```
 - ユーザーが見やすくわかりやすいこと
-- CSS を出来るだけ使わず、Bootstrapのみでどんなものが作れるのか
+- 画面サイズが変わってもレイアウトが崩れないこと　
 ```
 
 </div>
@@ -64,7 +74,7 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 </div>
 </details>
 
-<h3 align="center">見ていただく際に</h3>
+<h2>見ていただく際に</h2>
 
 ---
 
@@ -78,6 +88,6 @@ Trick
 
 と入力していただくと、倍速設定ができます。
 
-ご活用ください。
+100 倍速にし、はじめに LemonadeStand を買っていただくとスムーズにゲームを進めていただけます。
 
-![demo-Trick](https://user-images.githubusercontent.com/78239360/141728653-c11b468a-a263-4895-a917-9be5cb8fd8c0.gif)
+![newdemo-Trick](https://user-images.githubusercontent.com/78239360/141881953-5d26ed37-1c3a-4198-bf00-910a2b317e03.gif)
