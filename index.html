@@ -18,6 +18,8 @@
 </head>
 <body>
     <div id="wrapper" class="wrapper vh-100 d-flex justify-content-center align-items-center">
+        <div class="box1"></div>
+        <div class="box2"></div>
         <transition name="mainPage">
             <main-page
                 v-if="(!userObj == '')"
@@ -30,7 +32,7 @@
         </transition>
         <div v-show="!showMainPage">
             <div class="col-12 col-md-10 text-white d-flex justify-content-center align-items-start flex-wrap p-3">
-                <div id="startGamePage" class="bg-white text-dark d-flex justify-content-center align-items-center p-4 rounded">
+                <div id="startGamePage" class="startGamePage bg-white text-dark d-flex justify-content-center align-items-center p-4 rounded">
                     <div class="col-12">
                         <div class="pb-4">
                             <h1>Clicker Empire Game</h1>
@@ -50,16 +52,14 @@
                 </div>
             </div>
         </div>
-        
     </div>
 
     <!-- mainPageTemplate -->
     <script type="text/x-template" id="mainPage">
         <div class="mx-auto">
             <div class="col-10 d-flex flex-column flex-lg-row justify-content-center align-items-center align-items-lg-start py-3 mx-auto">
-
                 <!-- left -->
-                <div class="leftContainer bg-dark col-12 col-md-8 col-lg-5 p-3 rounded mb-3 mb-lg-0 border border-light">
+                <div class="mainContents leftContainer bg-dark col-12 col-md-8 col-lg-5 p-3 rounded mb-3 mb-lg-0 border border-light">
                     <div class="bg-secondary d-flex justify-content-center px-5 py-3 rounded">
                         <div class="col-12 col-lg-5 border border-warning pt-3 rounded">
                             <h4 class="text-center">{{user.burger}} Burgers</h4>
@@ -82,7 +82,7 @@
                 </div>
 
                 <!-- right -->
-                <div class="col-12 col-md-8 col-lg-6 d-flex flex-column ms-lg-3">
+                <div class="mainContents col-12 col-md-8 col-lg-6 d-flex flex-column ms-lg-3">
                     <div class="information bg-dark d-flex flex-wrap justify-content-around border border-light p-3 mb-3 rounded">
                         <div class="bg-secondary col-12 col-md-8 col-lg-5 border border-light pt-3 mb-3 rounded">
                             <p class="text-center">{{user.name}}</p>

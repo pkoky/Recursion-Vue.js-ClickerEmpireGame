@@ -1,19 +1,175 @@
+.box1 {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+  animation: box1-animation 6s infinite;
+}
 
+.box2 {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+  animation: box2-animation 10s infinite;
+}
 
 .items {
-    height: 20rem;
+  height: 20rem;
 }
 
-.mainPage-enter-active, .mainPage-leave-active {
-    transition: opacity 0.5s;
-}
-.mainPage-enter, .mainPage-leave-to {
-    opacity: 0;
+.mainContents {
+    z-index: 3;
 }
 
+.mainPage-enter-active,
+.mainPage-leave-active {
+  transition: opacity 0.5s;
+}
+.mainPage-enter,
+.mainPage-leave-to {
+  opacity: 0;
+}
 
+.startGamePage {
+  z-index: 2;
+}
 
 .wrapper {
-    background-image: url("https://media.istockphoto.com/photos/various-leafy-vegetables-picture-id512993458?b=1&k=20&m=512993458&s=170667a&w=0&h=Q-TKBNsXHf13uvXpeCcY1v5EmyL7SSLtlK82PASBpaQ=");
-    background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  @keyframes box1-animation {
+    0% {
+      width: 100px;
+      height: 10px;
+      background-color: #ff2a9c;
+      border-radius: 75%;
+    }
+    30% {
+      width: 10px;
+      height: 100px;
+      background-color: #f9ff80;
+      border-radius: 50%;
+      transform: scale(0.7) rotate(180deg);
+    }
+    75% {
+      width: 500px;
+      height: 500px;
+      background-color: #80fff0;
+      border-radius: 75%;
+      transform: scale(1) rotate(540deg);
+    }
+    100% {
+      width: 100px;
+      height: 10px;
+      background-color: #a58f9b;
+      border-radius: 75%;
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes box2-animation {
+    0% {
+      background-color: #ff2a9c;
+      border-radius: 75%;
+    }
+    20% {
+      transform: scale(2);
+    }
+    30% {
+      width: 100px;
+      height: 100px;
+      background-color: #f9ff80;
+      border-radius: 50%;
+      transform: rotate(90deg);
+    }
+    75% {
+      width: 500px;
+      height: 100px;
+      background-color: #80fff0;
+    }
+    100% {
+      background-color: #ca80ff;
+      border-radius: 75%;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  @keyframes box1-animation {
+    0% {
+      top: 30px;
+      left: 100px;
+      width: 500px;
+      height: 100px;
+      background-color: #ff2a9c;
+      border-radius: 75%;
+      transform: scale(0.4);
+    }
+    30% {
+      top: 0px;
+      left: 400px;
+      width: 100px;
+      height: 1000px;
+      background-color: #f9ff80;
+      border-radius: 50%;
+      transform: scale(0.7) rotate(90deg);
+    }
+    75% {
+      background-color: #80fff0;
+      border-radius: 75%;
+      transform: scale(2) rotate(540deg);
+    }
+    100% {
+      top: 30px;
+      left: 100px;
+      width: 500px;
+      height: 100px;
+      background-color: #a58f9b;
+      border-radius: 75%;
+      transform: scale(0.4) rotate(360deg);
+    }
+  }
+
+  @keyframes box2-animation {
+    0% {
+      bottom: 130px;
+      right: 300px;
+      background-color: #ff2a9c;
+      border-radius: 75%;
+      transform: scale(0.4);
+    }
+    20% {
+      bottom: 500px;
+      right: 0px;
+    }
+    30% {
+      bottom: 110px;
+      right: 100px;
+      width: 1000px;
+      height: 100px;
+      background-color: #f9ff80;
+      border-radius: 50%;
+      transform: scale(0.7) rotate(90deg);
+    }
+    75% {
+      width: 500px;
+      height: 100px;
+      background-color: #80fff0;
+      transform: scale(0.4);
+    }
+    100% {
+      bottom: 130px;
+      right: 300px;
+      background-color: #ca80ff;
+      border-radius: 75%;
+      transform: scale(0.4);
+    }
+  }
 }
