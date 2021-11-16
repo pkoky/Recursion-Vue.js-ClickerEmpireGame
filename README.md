@@ -16,10 +16,17 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 
 課題内容は
 
-> 仕事や投資、不動産等でお金を稼ぐ「Clicker Empire Game」というシミュレーションゲームを作成する。　　
-> 時間間隔（time interval）を使って毎秒ごとに状態やレンダーを更新する。
+- 仕事や投資、不動産等でお金を稼ぐ「Clicker Empire Game」というシミュレーションゲームを作成する。
+- 時間間隔（time interval）を使って毎秒ごとに状態やレンダーを更新する。
 
 というものです。
+
+> time intervalを使い時間の経過による状態の変化
+
+> localStorageを使いデータの保存
+
+などを実装しています。
+
 
 <h2>使用言語、ツール</h2>
 
