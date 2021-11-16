@@ -4,13 +4,10 @@
 
 https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 
----
 
 ![newdemo](https://user-images.githubusercontent.com/78239360/141881283-87effcea-78f9-43fc-83a9-54c459cf56cd.gif)
 
 <h2>Project概要</h2>
-
----
 
 コンピュータサイエンス学習プラットフォーム、[Recursion](https://recursionist.io/dashboard/users/koky) CS の課題です。
 
@@ -29,8 +26,6 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 
 <h2>使用言語、ツール</h2>
 
----
-
 - HTML
 - CSS
 - [Bootstrap v5.0](https://getbootstrap.jp/docs/5.0/getting-started/introduction/)
@@ -47,9 +42,8 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 - ハンバーガーをクリックする（得られるお金は FilipMachine の数に影響されます）
 - 投資や事業により、時間の経過によって稼ぐ（FLipMachine 以外のものが対象となります）
 
-<h2>拘ったポイント</h2>
 
----
+<h2>拘ったポイント</h2>
 
 <details>
 <summary>レイアウトについて</summary>
@@ -81,8 +75,6 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 </details>
 
 <h2>見ていただく際に</h2>
-
----
 
 裏コードを設定してあります。
 
