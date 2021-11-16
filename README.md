@@ -4,23 +4,22 @@
 
 https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 
-
 ![newdemo](https://user-images.githubusercontent.com/78239360/141881283-87effcea-78f9-43fc-83a9-54c459cf56cd.gif)
 
-<h2>Project概要</h2>
+<h2>Project制作の経緯/概要</h2>
 
-コンピュータサイエンス学習プラットフォーム、[Recursion](https://recursionist.io/dashboard/users/koky) CS の課題です。
+コンピュータサイエンス学習プラットフォーム、[Recursion](https://recursionist.io/dashboard/users/koky) でコンピューターサイエンスを学んでいます。  
+[Vue.js](https://jp.vuejs.org/index.html)を学習し、そのアウトプットとして制作しました。
 
-課題内容は
+Project の概要ですが、
 
-- 仕事や投資、不動産等でお金を稼ぐ「Clicker Empire Game」というシミュレーションゲームを作成する。　　
+- 仕事や投資、不動産等でお金を稼ぐ「Clicker Empire Game」というシミュレーションゲーム。
 - 時間間隔（time interval）を使って毎秒ごとに状態やレンダーを更新する。
 
 というものです。
 
-> time intervalを使い時間の経過によう状態の変化
-
-> localStorageを使ってデータの保存
+> time interval を使い時間の経過によう状態の変化  
+> localStorage を使ってデータの保存
 
 などを実装しています。
 
@@ -41,7 +40,6 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 
 - ハンバーガーをクリックする（得られるお金は FilipMachine の数に影響されます）
 - 投資や事業により、時間の経過によって稼ぐ（FLipMachine 以外のものが対象となります）
-
 
 <h2>拘ったポイント</h2>
 
