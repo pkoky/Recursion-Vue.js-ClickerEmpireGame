@@ -11,12 +11,13 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 コンピュータサイエンス学習プラットフォーム、[Recursion](https://recursionist.io/dashboard/users/koky) でコンピューターサイエンスを学んでいます。  
 [Vue.js](https://jp.vuejs.org/index.html)を学習し、そのアウトプットとして制作しました。
 
-Project の概要ですが、
-
+Project の概要
+```
 - 仕事や投資、不動産等でお金を稼ぐ「Clicker Empire Game」というシミュレーションゲーム。
 - 時間間隔（time interval）を使って毎秒ごとに状態やレンダーを更新する。
+```
 
-というものです。
+*** 
 
 > time interval を使い時間の経過によう状態の変化  
 > localStorage を使ってデータの保存
