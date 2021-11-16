@@ -17,7 +17,6 @@ Project の概要
 - 時間間隔（time interval）を使って毎秒ごとに状態やレンダーを更新する。
 ```
 
-*** 
 
 > time interval を使い時間の経過によう状態の変化  
 > localStorage を使ってデータの保存
