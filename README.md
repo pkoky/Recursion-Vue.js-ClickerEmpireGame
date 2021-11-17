@@ -1,5 +1,17 @@
 <h1 align="center">Click Empire Game</h1>
 
+見ていただきありがとうございます。
+
+**目次**  
+1 ページの URL  
+2 Project 制作の経緯/概要  
+3 使用言語/ツール  
+4 遊び方  
+5 拘ったポイント  
+6 見ていただく際に（裏コードの紹介）
+
+---
+
 **URL**
 
 https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
@@ -27,7 +39,7 @@ Project の概要
 
 などを実装しています。
 
-<h2>使用言語、ツール</h2>
+<h2>使用言語/ツール</h2>
 
 - HTML
 - CSS
