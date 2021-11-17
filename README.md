@@ -17,6 +17,8 @@
 
 https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 
+---
+
 ![newdemo](https://user-images.githubusercontent.com/78239360/141881283-87effcea-78f9-43fc-83a9-54c459cf56cd.gif)
 
 <h2>Project制作の経緯/概要</h2>
