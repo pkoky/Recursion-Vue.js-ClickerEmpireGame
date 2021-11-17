@@ -12,7 +12,8 @@ https://pkoky.github.io/Recursion-Vue.js-ClickerEmpireGame/
 
 オブジェクト、配列、連想配列、HTML、CSS、JS での DOM 操作を学び、  
 要件定義からデータ構造を設計し、  
-[Bootstrap v5.0](https://getbootstrap.jp/docs/5.0/getting-started/introduction/)と[Vue.js](https://jp.vuejs.org/index.html)の公式ドキュメントを見ながら開発しました。
+初めに公式ドキュメントを見て、素の JS と[Bootstrap v5.0](https://getbootstrap.jp/docs/5.0/getting-started/introduction/)で作りました。  
+それを今回、[Vue.js](https://jp.vuejs.org/index.html)で書き換えました。
 
 Project の概要
 
